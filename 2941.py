@@ -1,4 +1,6 @@
 import sys
-N=int(sys.stdin.readline())
-for i in range(1,N+1):
-    print(i)
+data=sys.stdin.readline().strip()
+data_find=["c=","c-","dz=","d-","lj","nj","s=","z="]
+for item in data_find:
+    data=data.replace(item,"!")
+print(len(data))
