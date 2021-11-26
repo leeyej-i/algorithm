@@ -1,31 +1,27 @@
+# 백준 11725
+# 실버 2 / 트리의 부모 찾기
 import sys
 from collections import deque
 N=int(sys.stdin.readline())
-visit=[]
 queue=deque()
-result=[]
-graph=[[0]*(N+1) for _ in range(N+1)]
+result=[0]*(N+1)
+graph=[[] for _ in range(N+1)]
+visit=[0]*(N+1)
 for _ in range(N-1):
     x,y=map(int, sys.stdin.readline().split())
-    graph[x][y]=graph[y][x]=1
-    if graph[1][x]==1 :
-        queue.append((1,x))
-        visit.append(1)
-        result.append([1,y])
-    elif graph[1][y] ==1 :
-        queue.append((1,y))
-        visit.append(1)
-        result.append([1,y])
+    graph[x].append(y)
+    graph[y].append(x)
+    
+queue.append(1)
+visit[1]=1
 
 while queue :
-    xp,yp=queue.popleft()
-    for i in range(1,N+1):
-        if graph[yp][i]==1 and i is not visit:
-            queue.append((yp,i))
-            visit.append(yp)
-            result.append([yp,i])
+    pop_node=queue.popleft()
+    for i in graph[pop_node]:
+        if visit[i]==0:
+            result[i]=pop_node
+            queue.append(i)
+            visit[pop_node]=1
 
-print(result)
-            
-        
-    
+for i in range(2,N+1):
+    print(result[i])
