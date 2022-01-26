@@ -1,5 +1,5 @@
 # 백준 5525
-# 실버 2 / IOIOI
+# 실버 2 / IOIOI./
 import sys
 N=int(sys.stdin.readline().strip())
 M=int(sys.stdin.readline().strip())
