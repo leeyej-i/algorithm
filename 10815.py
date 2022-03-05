@@ -1,5 +1,5 @@
 # 백준 10815
-# 실버 4/ 숫자카드
+# 실버 4/ 숫자 카드
 import sys
 N=int(sys.stdin.readline().strip())
 data1=set(map(int,sys.stdin.readline().split()))
