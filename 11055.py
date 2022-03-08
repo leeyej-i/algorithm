@@ -8,10 +8,9 @@ for i in range(N):
     if i==0 :
         result[i]=A[i]
     else :
+        result[i] = max(result[i], A[i])
         for j in range(i):
             if A[j]<A[i]:
                 result[i]=max(result[i], result[j]+A[i])
-            else:
-                result[i]=max(result[i], A[i])
 
 print(max(result))
