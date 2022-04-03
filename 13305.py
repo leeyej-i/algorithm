@@ -3,11 +3,16 @@
 import sys
 N=int(sys.stdin.readline())
 distance=list(map(int,sys.stdin.readline().split()))
-oil_price=list(map(int,sys.stdin.readline().split()))
-for i in range(N-1):
-    if i==0:
-        result=distance[i]*oil_price[i]
+oilPrice=list(map(int,sys.stdin.readline().split()))
+result = 0
+cheapOilIndex = 0
+for i in range(N-1) :
+    if i==0 :
+        cheapOilIndex = 0
+        result+= oilPrice[cheapOilIndex] * distance[i]
     else :
-        result=result+distance[i]*min(oil_price[i], oil_price[i-1])
+        if oilPrice[cheapOilIndex] > oilPrice[i]:
+            cheapOilIndex = i
+        result+= oilPrice[cheapOilIndex] * distance[i]
 
 print(result)
