@@ -4,7 +4,7 @@ from collections import deque
 import sys
 
 # 상어 냄새 줄어들게 하는 함수
-def sharkSmell():
+def sharkSmellDecrease():
     for i in range(N):
         for j in range(N):
             if graph[i][j][1] != 0 :
@@ -22,7 +22,7 @@ def sharkMove():
         # 1번 혼자남으면 종료
         if len(queue) == 1:
             break
-        sharkSmell()
+        sharkSmellDecrease()
         for _ in range(len(queue)):
             sharkNum, sharkX, sharkY = queue.popleft()
             sharkNum = sharkNum - 1
@@ -75,7 +75,7 @@ data = [] #상어 위치
 for _ in range(N):
     data.append(list(map(int,sys.stdin.readline().split())))
 
-# 상어 향기를 담기 위한 3차원 배열
+# 상어 냄새를 담기 위한 3차원 배열
 graph = [[] for _ in range(N)]
 # 상어 위치 담을 배열
 sharkLoc = []
