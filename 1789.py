@@ -3,7 +3,7 @@
 import sys
 S=int(sys.stdin.readline())
 sum=0
-for i in range(1,S+1):
+for i in range(1,S+2):
     sum+=i
     if sum > S :
         break
