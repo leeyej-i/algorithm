@@ -11,15 +11,48 @@ def change_text(num):
     return chr(num+64)
 
 # 각 합이 26인지 확인하는 함수
-def check():
-    for sum in sum_list:
-        sum_num = 0
+def check(index):
+    sum_num, sum_num2 = 0, 0
+    if index == 5 :
+        sum = sum_list[0]
         for i in range(4):
             x, y = sum[i][0], sum[i][1]
             sum_num += star_list[x][y]
         if sum_num != 26 :
             return 0
-    return 1
+        else : 
+            return 1
+    if index == 8 :
+        sum = sum_list[2]
+        for i in range(4):
+            x, y = sum[i][0], sum[i][1]
+            sum_num += star_list[x][y]
+        if sum_num != 26 :
+            return 0
+        else : 
+            return 1
+    if index == 11 :
+        sum, sum2 = sum_list[1], sum_list[3]
+        for i in range(4):
+            x, y = sum[i][0], sum[i][1]
+            xx, yy = sum2[i][0], sum2[i][1]
+            sum_num += star_list[x][y]
+            sum_num2 += star_list[xx][yy]
+        if sum_num != 26  or sum_num2 != 26:
+            return 0
+        else : 
+            return 1
+    if index == 12 :
+        sum, sum2 = sum_list[4], sum_list[5]
+        for i in range(4):
+            x, y = sum[i][0], sum[i][1]
+            xx, yy = sum2[i][0], sum2[i][1]
+            sum_num += star_list[x][y]
+            sum_num2 += star_list[xx][yy]
+        if sum_num != 26  or sum_num2 != 26:
+            return 0
+        else : 
+            return 1
 
 # 결과 프린트 함수
 def print_result():
@@ -34,18 +67,23 @@ def print_result():
 
 # 백트래킹 함수
 def back(index):
-    # 숫자를 다 채웠을 때
-    if index == 12:
-        # 합이 26일 때
-        if check()== 1 :
+    # 결과값
+    if index == 12 :
+        if check(index) == 1 :
             print_result()
             exit()
-    else :
-        x, y = loc_list[index][0], loc_list[index][1]
-        # 이미 채워진 경우
-        if visit[x][y] == 1 :
-            back(index+1)
-        else : 
+        else :
+            return
+        
+    # 중간 체크
+    if index == 5 or index == 8 or index == 11:
+        if check(index) != 1 :
+            return
+    x, y = loc_list[index][0], loc_list[index][1]
+    # 이미 채워진 경우
+    if visit[x][y] == 1 :
+           back(index+1)
+    else : 
             for j in range(1, 13):
                 if check_list[j] == 0 :
                     star_list[x][y] = j
@@ -53,8 +91,11 @@ def back(index):
                     check_list[j] = 1
                     back(index+1)
                     visit[x][y] = 0
-                    check_list[j] = 0 
-                    star_list[x][y] = 0
+                    check_list[j] = 0
+    
+            
+    
+
     
     
 star_list = []
