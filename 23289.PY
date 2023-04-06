@@ -146,9 +146,6 @@ while(True):
         for i,j in mac[k]:
             wind(i,j,k,tmp)
             tmp += 1
-    # for item in room:
-    #     print(item)
-    # print()
     room = control()
     minus()
     res +=1
@@ -156,7 +153,5 @@ while(True):
         break
     if check():
         break
-# for item in room:
-#     print(item)
-# print()
+
 print(res)
